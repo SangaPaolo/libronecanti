@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { ImageSourcePropType, Pressable } from "react-native";
 import Animated, {
-    interpolate,
-    useAnimatedStyle,
-    useSharedValue,
-    withSpring,
+	interpolate,
+	useAnimatedStyle,
+	useSharedValue,
+	withSpring,
 } from "react-native-reanimated";
 
 const TabBarButton = ({
@@ -53,7 +53,7 @@ const TabBarButton = ({
 		<Pressable
 			onPress={onPress}
 			onLongPress={onLongPress}
-			className="flex-1 justify-center items-center gap-1"
+			className="flex-1 justify-center items-center gap-1 z-30"
 		>
 			<Animated.Image
 				style={animatedIconStyle}

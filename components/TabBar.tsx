@@ -27,6 +27,7 @@ export function MyTabBar({
 	const buttonWidth = dimensions.width / state.routes.length;
 
 	const onTabbarLayout = (e: LayoutChangeEvent) => {
+		console.log("Layout dimensions:", e.nativeEvent.layout);
 		setDimensions({
 			height: e.nativeEvent.layout.height,
 			width: e.nativeEvent.layout.width,
@@ -42,8 +43,8 @@ export function MyTabBar({
 	})
 
 	return (
-		<View onLayout={onTabbarLayout} className="absolute min-h-[70px] bottom-14 flex-row justify-center p-1 items-center bg-secondary mx-7 rounded-[50px] shadow-lg">
-			<Animated.View className="absolute bg-primary-light rounded-full max-w-[66px] min-w-[60px] min-h-[60px] max-h-[66px]" style={animatedStyle}/>
+		<View onLayout={onTabbarLayout} className="absolute min-h-[70px] bottom-14 flex-row justify-evenly p-2 items-center bg-secondary mx-7 rounded-[50px] shadow-lg">
+			<Animated.View className="absolute bg-green-800 rounded-full z-10 w-full h-full" style={animatedStyle} />
 			{state.routes.map((route, index) => {
 				const { options } = descriptors[route.key];
 				const label =
@@ -56,7 +57,8 @@ export function MyTabBar({
 				const isFocused = state.index === index;
 
 				const onPress = () => {
-					tabPositionX.value = withSpring(buttonWidth * index, {duration: 1500});
+					console.log("index", index, "buttonWidth", buttonWidth, "targetX", buttonWidth * index);
+					tabPositionX.value = withSpring(buttonWidth * index, { damping: 1500 });
 					const event = navigation.emit({
 						type: "tabPress",
 						target: route.key,
