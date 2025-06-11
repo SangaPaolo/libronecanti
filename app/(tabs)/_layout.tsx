@@ -1,45 +1,111 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { MyTabBar } from "@/components/TabBar";
+import { icons } from "@/constants/icons";
+import { images } from "@/constants/images";
+import { Tabs } from "expo-router";
+import {
+	Image,
+	ImageBackground,
+	ImageSourcePropType,
+	View,
+} from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
-  );
+function TabIcon({ focused, icon }: any) {
+	if (focused) {
+		return (
+			<ImageBackground
+				source={images.hightlight as ImageSourcePropType}
+				className="w-[68px] h-[68px] items-center justify-center rounded-full"
+			>
+				<Image source={icon} className="w-6 h-6" />
+			</ImageBackground>
+		);
+	}
+	return (
+		<View>
+			<Image
+				source={icon}
+				className="w-5 h-5"
+				style={{ tintColor: "#A8B5DB" }}
+			/>
+		</View>
+	);
 }
+
+const _layout = () => {
+	return (
+		<Tabs tabBar={(props) => <MyTabBar {...props} />}>
+			<Tabs.Screen
+				name="trend"
+				options={{
+					title: "Trend",
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							focused={focused}
+							icon={icons.trendColor as ImageSourcePropType}
+							iconEmpty={icons.trendEmpty as ImageSourcePropType}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="indice"
+				options={{
+					title: "Indice",
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							focused={focused}
+							icon={icons.indexColor as ImageSourcePropType}
+							iconEmpty={icons.indexEmpty as ImageSourcePropType}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="index"
+				options={{
+					title: "Home",
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							focused={focused}
+							icon={icons.logoNoBg as ImageSourcePropType}
+							iconEmpty={icons.logoNoBg as ImageSourcePropType}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="search"
+				options={{
+					title: "Search",
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							focused={focused}
+							icon={icons.lensColor as ImageSourcePropType}
+							iconEmpty={icons.lensEmpty as ImageSourcePropType}
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name="preferiti"
+				options={{
+					title: "Preferiti",
+					headerShown: false,
+					tabBarIcon: ({ focused }) => (
+						<TabIcon
+							focused={focused}
+							icon={icons.prefColor as ImageSourcePropType}
+							iconEmpty={icons.prefEmpty as ImageSourcePropType}
+						/>
+					),
+				}}
+			/>
+		</Tabs>
+	);
+};
+
+export default _layout;
