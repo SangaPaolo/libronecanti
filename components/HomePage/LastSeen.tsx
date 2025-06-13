@@ -1,11 +1,9 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import ContainersHomePage from './ContainersHomePage'
 
 const LastSeen = () => {
   return (
-    <View>
-      <Text>LastSeen</Text>
-    </View>
+    <ContainersHomePage title='Ultimo brano visualizzato' />
   )
 }
 

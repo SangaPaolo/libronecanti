@@ -1,11 +1,9 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import ContainersHomePage from './ContainersHomePage'
 
 const PreferitiPreview = () => {
   return (
-    <View>
-      <Text>PreferitiPreview</Text>
-    </View>
+    <ContainersHomePage title='Brani preferiti' />
   )
 }
 

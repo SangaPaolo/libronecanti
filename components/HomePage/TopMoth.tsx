@@ -1,11 +1,9 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import ContainersHomePage from './ContainersHomePage'
 
 const TopMoth = () => {
   return (
-    <View>
-      <Text>TopMoth</Text>
-    </View>
+    <ContainersHomePage title='Brano del mese' />
   )
 }
 

@@ -1,12 +1,7 @@
 import { icons } from "@/constants/icons";
 import React, { useState } from "react";
-import {
-  Image,
-  ImageSourcePropType,
-  TextInput,
-  View
-} from "react-native";
-import SearchBarButton from "../SearchBarButton";
+import { Image, ImageSourcePropType, TextInput, View } from "react-native";
+import SearchBarButton from "../SearchBarList";
 
 const SearchBar = () => {
 	const [searchQuery, setSearchQuery] = useState("");
@@ -21,9 +16,9 @@ const SearchBar = () => {
 						placeholderTextColor="#897C80"
 						onChangeText={(text) => setSearchQuery(text)}
 						value={searchQuery}
-            autoCorrect={false}
-            spellCheck={false}
-            selectionColor={"#897C80"}
+						autoCorrect={false}
+						spellCheck={false}
+						selectionColor={"#897C80"}
 					/>
 					<Image
 						source={icons.searchLens as ImageSourcePropType}

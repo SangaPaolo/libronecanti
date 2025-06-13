@@ -55,7 +55,8 @@ export function MyTabBar({
 	return (
 		<View
 			// onLayout={onTabbarLayout}
-			className="absolute min-h-[70px] bottom-14 flex-row bg-secondary justify-between items-center mx-7 rounded-[50px] shadow-lg border border-primary-dark"
+			// className="absolute min-h-[70px] bottom-14 flex-row bg-secondary justify-between items-center mx-7 rounded-[50px] shadow-lg border border-primary-dark"
+			className="h-[80px] pb-4 bg-secondary border-t border-primary-light flex-row items-center justify-around"
 		>
 			{/* <Animated.View
 				className="absolute bg-primary-light rounded-full z-10 w-full h-full left-0"
