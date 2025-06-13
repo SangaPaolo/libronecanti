@@ -1,3 +1,4 @@
+import graylogo from "@/assets/images/graylogo.png";
 import guitar from "@/assets/images/guitar.png";
 import hightlight from "@/assets/images/highlight.png";
 import homescreenBg from "@/assets/images/homescreenbg.png";
@@ -12,4 +13,5 @@ export const images = {
 	homescreenBg,
 	logo,
 	hightlight,
+	graylogo,
 };

@@ -3,7 +3,7 @@ import ContainersHomePage from './ContainersHomePage'
 
 const PreferitiPreview = () => {
   return (
-    <ContainersHomePage title='Brani preferiti' />
+    <ContainersHomePage title='Brano preferito' />
   )
 }
 

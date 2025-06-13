@@ -8,7 +8,7 @@ interface TitleBoxesProps {
 const TitleBoxes = ({ title }: TitleBoxesProps) => {
 	return (
 		<View>
-			<Text className="font-thin text-3xl" adjustsFontSizeToFit>{title}</Text>
+			<Text className="font-thin text-3xl">{title}</Text>
 		</View>
 	);
 };

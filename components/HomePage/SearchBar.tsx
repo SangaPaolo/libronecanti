@@ -14,6 +14,7 @@ const SearchBar = () => {
 						className="flex-1 text-xl text-defaultText h-full justify-center"
 						placeholder="Cerca un brano..."
 						placeholderTextColor="#897C80"
+						placeholderClassName="font-thin"
 						onChangeText={(text) => setSearchQuery(text)}
 						value={searchQuery}
 						autoCorrect={false}
