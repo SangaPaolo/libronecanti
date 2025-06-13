@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ImageSourcePropType, Pressable } from "react-native";
+import { Pressable } from "react-native";
 import Animated, {
 	interpolate,
 	useAnimatedStyle,
@@ -7,20 +7,22 @@ import Animated, {
 	withSpring,
 } from "react-native-reanimated";
 
+interface TabBarButtonProps {
+	routeName: string;
+	onPress: () => void;
+	onLongPress: () => void;
+	isFocused: boolean;
+	label: string;
+	icon: string;
+}
+
 const TabBarButton = ({
 	onPress,
 	onLongPress,
 	isFocused,
 	icon,
 	label,
-}: {
-	onPress: Function;
-	onLongPress: Function;
-	isFocused: boolean;
-	routeName: string;
-	label: string;
-	icon: ImageSourcePropType;
-}) => {
+}: TabBarButtonProps) => {
 	const scale = useSharedValue(0);
 
 	useEffect(() => {
@@ -32,12 +34,11 @@ const TabBarButton = ({
 
 	const animatedIconStyle = useAnimatedStyle(() => {
 		const scaleValue = interpolate(scale.value, [0, 1], [1, 1.8]);
-        const top = interpolate(scale.value, [0, 1], [0, 9]);
-
+		const top = interpolate(scale.value, [0, 1], [0, 9]);
 
 		return {
 			transform: [{ scale: scaleValue }],
-            top
+			top,
 		};
 	});
 
@@ -53,7 +54,7 @@ const TabBarButton = ({
 		<Pressable
 			onPress={onPress}
 			onLongPress={onLongPress}
-			className="flex-1 justify-center items-center gap-1 z-30"
+			className="flex-1 flex-col justify-center items-center gap-1 z-30"
 		>
 			<Animated.Image
 				style={animatedIconStyle}
